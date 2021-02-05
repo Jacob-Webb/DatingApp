@@ -1,4 +1,5 @@
 using API.Data;
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,7 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore;
+//using Pomelo.EntityFrameworkCore.MySql;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace API
 {
@@ -23,7 +25,12 @@ namespace API
         {
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseMySQL(_config.GetConnectionString("DefaultConnection"));
+                options.UseMySql( // Replace with your connection string.
+                        _config.GetConnectionString("DefaultConnection"),
+                        new MySqlServerVersion(new Version(5, 6, 41)),
+                        mySqlOptions => mySqlOptions.CharSetBehavior(CharSetBehavior.NeverAppend));
+                        
+                //options.UseMySql(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
