@@ -1,0 +1,59 @@
+@import '../../styles.scss';
+
+.navbar
+{
+  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 0 2% 0 2%;
+}
+
+.navbar a
+{
+  font-size: 0.9em;
+}
+
+.nav-buttons
+{
+  display: inline;
+}
+.nav-login
+{
+  display: inline;
+}
+form 
+{
+  display:inline;
+}
+.login-field
+{
+  padding-top: 10px;
+  margin: 0 5px;
+  font-size: 80%;
+}
+.login-icon
+{
+  font-size: 80%;
+}
+
+@media (max-width: 499px){
+  .nav-menu-show
+  {
+    display: none;
+  }
+}
+@media (min-width: 500px){
+  .nav-menu-hide
+  {
+    display: none;
+  }
+}
+.logo
+{
+  font-family: 'Baskerville';
+  color: white;
+  text-decoration:none;
+}
+::ng-deep .menu-background
+{
+  background-color: mat-color($client-accent, 800) !important;
+}

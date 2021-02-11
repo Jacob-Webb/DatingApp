@@ -1,0 +1,35 @@
+<header>
+    <mat-toolbar color="primary" class="navbar">
+      <a href="" class="logo">Dating App</a> 
+      <div class="nav-menu-show">
+        <!-- <a mat-button *ngIf="this.basicAuthenticationService.isUserLoggedIn()" routerLink="/welcome/jacob-webb">Home</a> -->
+        <div class="nav-buttons">
+          <a mat-button title="Matches"><mat-icon>people_alt</mat-icon></a>
+          <a mat-button title="List"><mat-icon>list</mat-icon></a>
+          <a mat-button title="Messages"><mat-icon>message</mat-icon></a>
+        </div>
+        <div class="nav-login">
+          <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+            <mat-form-field appearance="" color="accent" class="login-field">
+              <mat-label>Username</mat-label>
+              <input 
+                name="username" 
+                [(ngModel)]="model.username"
+                type="text" matInput>
+              <mat-icon matSuffix class="login-icon">person</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="" color="accent" class="login-field">
+              <mat-label>Password</mat-label>
+              <input 
+                name="password"
+                [(ngModel)]="model.password"
+                [type]="hide ? 'password' : 'text'" matInput>
+            <mat-icon matSuffix class="login-icon" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <button mat-button mat-raised  type="submit" title="Sign in / Register"><mat-icon>login</mat-icon></button>
+          </form>
+        </div>
+      </div>
+    </mat-toolbar> 
+  
+  </header>
