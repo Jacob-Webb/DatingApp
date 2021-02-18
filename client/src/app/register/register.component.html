@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-title>Sign up</mat-card-title>
+    <mat-card-content>
+        <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+            <mat-form-field color="accent" appearance="fill">
+                <mat-label>Username</mat-label>
+                <input name="username" [(ngModel)]="model.username"
+                    type="text" matInput>
+                <mat-icon matSuffix class="login-icon">person</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="" color="accent" class="login-field">
+                <mat-label>Password</mat-label>
+                <input 
+                  name="password"
+                  [(ngModel)]="model.password"
+                  [type]="hide ? 'password' : 'text'" matInput>
+              <mat-icon matSuffix class="login-icon" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </mat-form-field>
+            <mat-card-actions fxLayoutAlign="center">
+                <button mat-raised-button color="primary" type="submit" title="Register"><mat-icon>login</mat-icon></button>
+                <button mat-raised-button (click)="cancel()" color="accent" type="button" title="Cancel"><mat-icon>cancel</mat-icon></button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>
