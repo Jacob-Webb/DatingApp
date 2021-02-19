@@ -31,13 +31,24 @@ import { FooterComponent } from './footer/footer.component';
 
 // Angular CDK imports
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { MessagesComponent } from './messages/messages.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    RegisterComponent,
+    MemberListComponent,
+    MemberDetailsComponent,
+    MessagesComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -63,10 +74,10 @@ import { ToastrModule } from 'ngx-toastr';
     MatToolbarModule,
     MatTooltipModule,
     FlexLayoutModule,
-    FormsModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    })
+    FormsModule
+    // ToastrModule.forRoot({
+    //   positionClass: 'toast-bottom-right'
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+<div class="container">
+    <div *ngIf="!registerMode" style="text-align:center;">
+        <h1>Find your match</h1>
+        <p class="lead">Come on in to view your matches... all you need to do is sign up!</p>
+        <div class="text-center">
+            <button (click)="registerToggle()" mat-raised-button color="primary">Register</button>
+            <button mat-raised-button color="primary">Learn more</button>
+        </div>
+    </div>
+
+    <div *ngIf="registerMode" class="container">
+        <div class="" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="5px;">
+            <div class="col-4">
+                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+            </div>
+        </div>
+    </div>
+</div>

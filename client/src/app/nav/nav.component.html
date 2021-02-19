@@ -3,12 +3,20 @@
       <a href="" class="logo">Dating App</a> 
       <div class="nav-menu-show">
         <!-- <a mat-button *ngIf="this.basicAuthenticationService.isUserLoggedIn()" routerLink="/welcome/jacob-webb">Home</a> -->
-        <div class="nav-buttons">
+        <div *ngIf="accountService.currentUser$ | async" class="nav-buttons">
           <a mat-button title="Matches"><mat-icon>people_alt</mat-icon></a>
           <a mat-button title="List"><mat-icon>list</mat-icon></a>
           <a mat-button title="Messages"><mat-icon>message</mat-icon></a>
+          <a mat-icon-button [matMenuTriggerFor]="profile" *ngIf="accountService.currentUser$ | async"><mat-icon>person</mat-icon></a>
         </div>
-        <div class="nav-login">
+        <mat-menu #profile="matMenu" color="primary">
+          <div>
+            <a mat-menu-item>Edit Profile</a>
+            <a mat-menu-item (click)="logout()">Logout</a>
+          </div>
+        </mat-menu>
+
+        <div *ngIf="(accountService.currentUser$ | async) === null" class="nav-login">
           <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
             <mat-form-field appearance="" color="accent" class="login-field">
               <mat-label>Username</mat-label>
@@ -29,6 +37,35 @@
             <button mat-button mat-raised  type="submit" title="Sign in / Register"><mat-icon>login</mat-icon></button>
           </form>
         </div>
+      </div>
+
+      <div class="nav-menu-hide">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Icon-button with a menu"><mat-icon>menu</mat-icon></button>
+        <mat-menu #menu="matMenu" color="primary">
+          <div>
+          <!--<a mat-menu-item *ngIf="loggedIn"><mat-icon aria-hidden="false" aria-label="Home Icon">home</mat-icon></a>-->
+          <a mat-menu-item [matMenuTriggerFor]="profile" *ngIf="accountService.currentUser$ | async"><mat-icon>person</mat-icon></a>
+          <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+            <mat-form-field appearance="" color="accent" class="login-field">
+              <mat-label>Username</mat-label>
+              <input 
+                name="username" 
+                [(ngModel)]="model.username"
+                type="text" matInput>
+              <mat-icon matSuffix class="login-icon">person</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="" color="accent" class="login-field">
+              <mat-label>Password</mat-label>
+              <input 
+                name="password"
+                [(ngModel)]="model.password"
+                [type]="hide ? 'password' : 'text'" matInput>
+            <mat-icon matSuffix class="login-icon" (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <button mat-button mat-raised  type="submit" title="Sign in / Register">login</button>
+          </form>
+          </div>
+        </mat-menu>
       </div>
     </mat-toolbar> 
   
