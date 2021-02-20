@@ -3,11 +3,13 @@
       <a href="" class="logo" routerLink='/' routerLinkActive='active'>Dating App</a> 
       <div class="nav-menu-show">
         <!-- <a mat-button *ngIf="this.basicAuthenticationService.isUserLoggedIn()" routerLink="/welcome/jacob-webb">Home</a> -->
-        <div *ngIf="accountService.currentUser$ | async" class="nav-buttons">
-          <a mat-button title="Matches" routerLink='/members' routerLinkActive='active'><mat-icon>people_alt</mat-icon></a>
-          <a mat-button title="Lists" routerLink='/lists' routerLinkActive='active'><mat-icon>list</mat-icon></a>
-          <a mat-button title="Messages" routerLink='/messages' routerLinkActive='active'><mat-icon>message</mat-icon></a>
-          <a mat-icon-button [matMenuTriggerFor]="profile" *ngIf="accountService.currentUser$ | async"><mat-icon>person</mat-icon></a>
+        <div class="nav-buttons">
+          <ng-container *ngIf="accountService.currentUser$ | async">
+            <a mat-button title="Matches" routerLink='/members' routerLinkActive='active'><mat-icon>people_alt</mat-icon></a>
+            <a mat-button title="Lists" routerLink='/lists' routerLinkActive='active'><mat-icon>list</mat-icon></a>
+            <a mat-button title="Messages" routerLink='/messages' routerLinkActive='active'><mat-icon>message</mat-icon></a>
+            <a mat-icon-button [matMenuTriggerFor]="profile" *ngIf="accountService.currentUser$ | async"><mat-icon>person</mat-icon></a>
+          </ng-container>
         </div>
         <mat-menu #profile="matMenu" color="primary">
           <div>
