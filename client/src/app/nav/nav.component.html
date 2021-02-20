@@ -1,12 +1,12 @@
 <header>
     <mat-toolbar color="primary" class="navbar">
-      <a href="" class="logo">Dating App</a> 
+      <a href="" class="logo" routerLink='/'>Dating App</a> 
       <div class="nav-menu-show">
         <!-- <a mat-button *ngIf="this.basicAuthenticationService.isUserLoggedIn()" routerLink="/welcome/jacob-webb">Home</a> -->
         <div *ngIf="accountService.currentUser$ | async" class="nav-buttons">
-          <a mat-button title="Matches"><mat-icon>people_alt</mat-icon></a>
-          <a mat-button title="List"><mat-icon>list</mat-icon></a>
-          <a mat-button title="Messages"><mat-icon>message</mat-icon></a>
+          <a mat-button title="Matches" routerLink='/members'><mat-icon>people_alt</mat-icon></a>
+          <a mat-button title="Lists" routerLink='/lists'><mat-icon>list</mat-icon></a>
+          <a mat-button title="Messages" routerLink='/messages'><mat-icon>message</mat-icon></a>
           <a mat-icon-button [matMenuTriggerFor]="profile" *ngIf="accountService.currentUser$ | async"><mat-icon>person</mat-icon></a>
         </div>
         <mat-menu #profile="matMenu" color="primary">
