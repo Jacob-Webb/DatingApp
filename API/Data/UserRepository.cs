@@ -14,9 +14,11 @@ namespace API.Data
             _context = context;
 
         }
-        public async Task<IEnumerable<AppUser>> GetUserAsync()
+        public async Task<IEnumerable<AppUser>> GetUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+            .Include(p => p.Photos)
+            .ToListAsync();
         }
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
@@ -25,7 +27,9 @@ namespace API.Data
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
-            return await _context.Users.SingleOrDefaultAsync(user => user.UserName == username);
+            return await _context.Users
+            .Include(p => p.Photos)
+            .SingleOrDefaultAsync(user => user.UserName == username);
         }
 
         public async Task<bool> SaveAllAsync()
