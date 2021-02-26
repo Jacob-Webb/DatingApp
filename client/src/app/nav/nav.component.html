@@ -10,7 +10,7 @@
             <a mat-button title="Messages" routerLink='/messages' routerLinkActive='active'><mat-icon>message</mat-icon></a>
             <a mat-icon-button [matMenuTriggerFor]="profile" *ngIf="accountService.currentUser$ | async"><mat-icon>person</mat-icon></a>
           </ng-container>
-          <a mat-raised-button routerLink='/errors' routerLinkActive='active'>Errors</a>
+          <!--<a mat-raised-button routerLink='/errors' routerLinkActive='active'>Errors</a>-->
         </div>
         <mat-menu #profile="matMenu" color="primary">
           <div>
